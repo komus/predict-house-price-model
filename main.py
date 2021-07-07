@@ -1,9 +1,9 @@
 from flask import Flask,request
 from flask_restful import Resource, Api
 from flask_cors import CORS
-from .config import API_Status, API_Status_Message
+from config import API_Status, API_Status_Message
 import numpy as np
-from .class_lib.linear_regression import Predict_Price
+from class_lib.linear_regression import Predict_Price
 
 
 app = Flask(__name__)
