@@ -11,7 +11,6 @@ def test_predictclass_init_string():
     with pytest.raises(Exception):
         Predict_Price('he')
 
-
 def test_folder_creations():
     Predict_Price()
     assert os.path.exists(OUTPUT_PATH) == True

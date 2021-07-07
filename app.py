@@ -11,9 +11,7 @@ api = Api(app)
 class Boston_Price(Resource):
     def post(self):
         data = request.get_json(force=True)
-        print(data)
         if "inputs" in data :
-            print (type(data['inputs']))
             try:
                 cls = Predict_Price(1).predict(data['inputs'])
                 return {'status_code':  API_Status.OKAY,
@@ -31,7 +29,7 @@ class Boston_Price(Resource):
 
 
 
-api.add_resource(Boston_Price, '/predict')
+api.add_resource(Boston_Price, '/api/predict/')
 app.run(port=5001, debug=True)
 
 

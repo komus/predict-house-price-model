@@ -15,6 +15,13 @@ from config import *
 #print(OUTPUT_PATH)
 
 class Predict_Price:
+    """
+        Class to Predict Boston House Price
+
+        USE_PRETRAINED_MODELS: default 0
+            0 = Train the model before predicting
+            1 = Use the fitted model in models/boston_price.pkl to make prediction
+    """
     def __init__(self, USE_PRETRAINED_MODELS:int = 0) -> None:
 
         if not USE_PRETRAINED_MODELS in (0,1):
@@ -35,22 +42,31 @@ class Predict_Price:
 
     @property
     def x_train(self) -> np.array:
+        """ Returns x_train values"""
         return self.__x_train
 
     @property
     def x_test(self) -> np.array:
+        """ Returns x_test values"""
         return self.__x_test
 
     @property
     def y_train(self)-> np.array:
+        """ Returns y_train values"""
         return self.__y_train
 
     @property
     def y_test(self) -> np.array:
+        """ Returns y_test values"""
         return self.__y_test
 
 
     def __train(self) -> np.array:
+        """ Train the dataset
+            - Print RMS and Mean Absolute Error
+            - Store the model in file
+            - plot predicted vs expected value
+        """
         clf = LinearRegression()
         clf.fit(self.__x_train, self.__y_train)
         predicted = clf.predict(self.__x_test)
@@ -64,6 +80,9 @@ class Predict_Price:
         self.__plot_train_prediction(predicted, expected)
 
     def predict(self, input_param: np.array):
+        """
+            Predict value based on trained/saved model
+        """
         val = self.__check_array_validation(input_param)
         model_pkl_filename = MODELS_PATH + 'boston_price.pkl'
         with open(model_pkl_filename, "rb") as f:
@@ -88,6 +107,9 @@ class Predict_Price:
 
 
     def __check_array_validation(self, input_param: np.array):
+        """
+            Check if inputted param is a 2D array. 
+        """
         val = np.asarray(input_param)
         if len(val.shape) != 2:
             raise ValueError (f"Expected 2D array for the prediction, got {len(val.shape)}D array")
