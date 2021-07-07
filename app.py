@@ -30,7 +30,7 @@ class Boston_Price(Resource):
 
 
 api.add_resource(Boston_Price, '/api/predict/')
-app.run(port=5001, debug=True)
+app.run()
 
 
 
