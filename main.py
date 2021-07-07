@@ -1,12 +1,19 @@
 from flask import Flask,request
 from flask_restful import Resource, Api
-from config import API_Status, API_Status_Message
+from flask_cors import CORS
+from .config import API_Status, API_Status_Message
 import numpy as np
-from class_lib.linear_regression import Predict_Price
+from .class_lib.linear_regression import Predict_Price
 
 
 app = Flask(__name__)
+#app.config['DEBUG'] = True
 api = Api(app)
+CORS(app)
+
+class HelloWorld(Resource):    
+    def get(self):        
+        return {'hello': 'Welcome to my Boston App'}
 
 class Boston_Price(Resource):
     def post(self):
@@ -28,10 +35,12 @@ class Boston_Price(Resource):
 
 
 
-
+api.add_resource(HelloWorld, '/')
 api.add_resource(Boston_Price, '/api/predict/')
-app.run()
 
+
+if __name__ == '__main__':
+    app.run()
 
 
 
