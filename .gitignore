@@ -170,4 +170,8 @@ pip-selfcheck.json
 .history
 .ionide
 
+
+#Extra data
+*.csv
+
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,virtualenv

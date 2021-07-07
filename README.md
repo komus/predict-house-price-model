@@ -1,4 +1,4 @@
-#Predicting House Prices
+# Predicting House Prices
 
 This project is about creating an endpoint that predicts house prices based on inputted features. 
 
