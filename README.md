@@ -6,7 +6,7 @@ This project is about creating an endpoint that predicts house prices based on i
 ## Endpoint
 The endpoint `/predict` accepts payload of the following structure.
 ``` http
-POST /api/predict/
+POST https://lynkideas-price.herokuapp.com/api/predict/
 ```
 |Parameter |  Type         |  Description           |
 |----------|:-------------:|-----------------------:|
